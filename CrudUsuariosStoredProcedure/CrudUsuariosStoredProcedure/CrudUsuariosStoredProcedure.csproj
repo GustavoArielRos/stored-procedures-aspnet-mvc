@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Home\Editar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="8.0.8" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Home\Editar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Home\Editar.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Home\Editar.cshtml" />
+  </ItemGroup>
+
+</Project>

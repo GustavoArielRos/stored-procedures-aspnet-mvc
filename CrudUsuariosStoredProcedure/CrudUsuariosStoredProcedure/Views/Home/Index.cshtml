@@ -1,0 +1,72 @@
+﻿@*para eu utlizar a lista recebida preciso recebê-la ela aqui*@
+@*diretiva que receba a lista de usuarios*@
+
+@model List<Usuario>
+
+@*Criadas no HomeController*@
+@*se tiver uma mensagem dentro dessa caixa*@
+@if(TempData["MensagemSucesso"] != null)
+{
+    <div class="alert alert-success text-dark" role="alert">
+        @TempData["MensagemSucesso"]
+    </div>
+}
+
+@*se tiver uma mensagem dentro dessa caixa*@
+@if(TempData["MensagemErro"] != null)
+{
+    <div class="alert alert-success text-dark" role="danger">
+        @TempData["MensagemErro"]
+    </div>
+}
+
+<div class="container">
+
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Registros de Usuários</h1>
+        <a asp-action="Cadastrar" asp-controller="Home" class="btn btn-success">Cadastrar Usuários</a>
+    </div>
+
+
+    <table class="table table-hover table-bordered mt-5" >
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Sobrenome</th>
+                <th>Email</th>
+                <th>Cargo</th>
+                <th></th>
+
+            </tr>          
+        </thead>
+        <tbody>
+
+            @if (Model.Count() > 0)
+            {
+                
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+                        <td>@usuario.Id</td>
+                        <td>@usuario.Nome</td>
+                        <td>@usuario.Sobrenome</td>
+                        <td>@usuario.Email</td>
+                        <td>@usuario.Cargo</td>
+                        <td>
+                            @*esse asp-route-id envia o "Id" para essa view *@
+                            <a asp-action="Detalhes" asp-controller="Home" asp-route-id="@usuario.Id" class="btn btn-warning">Detalhes</a>
+                            <a asp-action="Editar" asp-controller="Home" asp-route-id="@usuario.Id" class="btn btn-info">Editar</a>
+                            <a asp-action="Remover" asp-controller="Home" asp-route-id="@usuario.Id" class="btn btn-danger">Remover</a>
+                        </td>
+                    </tr>
+                }
+
+            }
+
+
+
+
+        </tbody>
+    </table>
+</div>
